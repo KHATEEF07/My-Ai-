@@ -1,22 +1,24 @@
-# Khateef AI — Personal AI Workspace Starter
+# Khateef AI — real chat starter
 
-A responsive, mobile-friendly front-end prototype for a personal AI workspace.
+This version adds a Vercel serverless endpoint for real AI chat. It is still a starter: Code Studio, Image Lab, Video Studio, integrations, and automations remain UI prototypes.
 
-## Files
-- `index.html` — app screens and layout
-- `styles.css` — responsive UI, colours, gradients, cards, and animations
-- `app.js` — navigation and preview interactions
-- `manifest.webmanifest` and `icon.svg` — installable-app metadata and icon
+## Deploy on Vercel (required for AI chat)
 
-## Run
-Open `index.html` in a modern browser, or host the files on a static HTTPS host.
+1. Push these project files to your GitHub repository. Keep `index.html`, `app.js`, `styles.css`, `manifest.webmanifest`, `icon.svg`, `README.md`, and the `api/chat.js` file in the repository root / `api` folder as shown.
+2. In Vercel, import the GitHub repository as a new project and deploy it. Vercel serves the static website and runs `api/chat.js` as a serverless function.
+3. In the Vercel project, open **Settings → Environment Variables**. Add `OPENAI_API_KEY` with your API key. Optionally add `OPENAI_MODEL` if your API account uses a different model available to it.
+4. Redeploy after adding the environment variable.
+5. Open the Vercel deployment URL (not the GitHub Pages URL) and test the chat.
 
-## Important
-This is a UI prototype, not yet a connected AI service. Chat replies are demo responses. It does not yet generate actual images/videos, run code in a sandbox, or access external accounts. Those features need a secure backend, model/provider API credentials stored server-side, and authorised integrations. Never put API keys in public JavaScript or a public GitHub repository.
+## Security and cost
 
-## Next build phase
-1. Add a secure backend and real model endpoint.
-2. Add image/video providers.
-3. Add isolated code execution and tests.
-4. Add OAuth integrations one by one, starting with GitHub.
-5. Add user accounts, storage, permission controls, rate limits, and logging.
+- Never put the API key in `app.js`, `index.html`, GitHub, or any browser-side code.
+- This starter endpoint has basic request validation but does not include user login or a persistent rate limiter. Before sharing publicly, add authentication/rate limiting and set spending/usage limits in your API provider account. A public endpoint can otherwise be abused and generate costs.
+- API usage may be billed separately from ChatGPT subscriptions.
+
+## Current feature status
+
+- Real AI chat: available after deploying on Vercel and configuring `OPENAI_API_KEY`.
+- Code Studio: interface only for now.
+- Image Lab and Video Studio: interface only for now.
+- Integrations and automations: placeholders.
